@@ -37,13 +37,9 @@ const email = ref('')
 const password = ref('')
 
 const handleLogin = () => {
-  // Mock login
-  authStore.login({ email: email.value })
-  if (authStore.hasMess) {
-    router.push('/dashboard')
-  } else {
-    router.push('/choice')
-  }
+  const usernameFromEmail = email.value.split('@')[0] || email.value
+  authStore.login({ username: usernameFromEmail, email: email.value }, 'dummy-token')
+  router.push('/dashboard')
 }
 
 const toggleLanguage = () => {
