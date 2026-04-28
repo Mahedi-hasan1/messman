@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', {
       this.isLoggedIn = true
       this.user = user
       this.token = token
-      this.mess = user?.mess || null
+      this.mess = user.mess_members && user.mess_members.length > 0 ? user.mess_members[user.mess_members.length - 1].mess : null
       this.hasMess = !!this.mess
     },
     logout() {
